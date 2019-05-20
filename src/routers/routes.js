@@ -1,7 +1,8 @@
+import pathUtils from './utils'
+
 export default [
-  {
+  pathUtils({
     path: '/',
-    name: 'home',
-    component: () => import(/* webpackChunkName: "chunk-app" */ '../views/Home.vue')
-  }
+    name: 'home'
+  })
 ]

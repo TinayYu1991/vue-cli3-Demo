@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" src="../../assets/logo.png">
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -36,7 +36,26 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  }
+  },
+
+  async mounted() {
+    this.$axios.auth.get('/activity/api/userAddress/get', {
+      params: {
+        userId: '5dfc811103c8540014e15930'
+      }
+    }).then(a => {
+      console.log('a========>', a.data)
+    }).catch(err => {
+      console.log('err========>', err)
+    })
+
+    const a = await this.$axios.get('/activity/api/userAddress/get', {
+      params: {
+        userId: '5dfc811103c8540014e15930'
+      }
+    })
+    console.log('a========>', a.data)
+  },
 }
 </script>
 
